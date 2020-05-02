@@ -9,7 +9,7 @@ module.exports = {
             length: 5,
             charset: 'numeric'
           });
-        var conum = "s" + number  
+        var conum = "co" + number  
             args = {"po":req.body.po,"foreid":req.body.foreid,"purps":req.body.purps,"fdec":req.body.fdec, "ccorder":req.body.ccorder,"conum":conum,"pquanty":req.body.pquanty, "futs":req.body.futs};
             obj = {
                 chainId : "mychannel",
