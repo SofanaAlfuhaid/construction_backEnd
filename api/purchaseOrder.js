@@ -8,6 +8,7 @@ module.exports = {
         length: 10,
         charset: 'numeric'
       });
+      console.log(req.body)
     args = {"po":ponumber,"posts":req.body.posts,"itemno":req.body.itemno,"itemname":req.body.itemname,"desc":req.body.desc,"quan":req.body.quan,"uprice":req.body.uprice,"state":req.body.state,"addr":req.body.addr,"delvry":req.body.delvry,"buyerid":req.body.buyerid,"suppid":req.body.suppid,"cts":req.body.cts,"uts":req.body.uts,"amt":req.body.amt}
     obj = {
         chainId : "mychannel",
