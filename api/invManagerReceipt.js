@@ -7,9 +7,10 @@ module.exports = {
         number = randomstring.generate({
             length: 5,
             charset: 'numeric'
-          });
+        });
         var grept = "GR" + number  
-            args = {"po":req.body.po,"invmngid":req.body.invmngid,"expdate":req.body.expdate, "gis":req.body.gis,"grept":grept,"grsts":req.body.grsts, "uts":req.body.uts}
+        var invmngid = "IM0001"
+            args = {"po":req.body.po,"invmngid":invmngid,"expdate":req.body.expdate, "gis":req.body.gis,"grept":grept,"grsts":req.body.grsts, "uts":req.body.uts}
             // obj = {
             //     chainId : "mychannel",
             //     chaincodeId : "track",
