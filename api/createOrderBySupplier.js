@@ -9,8 +9,8 @@ module.exports = {
             length: 5,
             charset: 'numeric'
           });
-        var shid = "s" + number
-        args = {"po":req.body.po,"cid":req.body.cid,"shid":shid,"trno":req.body.trno,"regid":req.body.regid,"dosts":req.body.dosts,"gtin":req.body.gtin,"uts":req.body.uts}
+        var donumber = "DO" + number
+        args = {"po":req.body.po,"cid":req.body.cid,"shid":req.body.shid,"donumber" : donumber,"trno":req.body.trno,"regid":req.body.regid,"dosts":req.body.dosts,"gtin":req.body.gtin,"uts":req.body.uts}
         // obj = {
         //     chainId : "mychannel",
         //     chaincodeId : "track",
