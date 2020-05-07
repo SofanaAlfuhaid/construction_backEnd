@@ -25,7 +25,7 @@ module.exports = {
                 orderModel.findOne({PONumber : req.body.po}, (err, order)=>{
                     if(order){
                         order.CarrierId = req.body.cid
-                        order.ShipmentId = shid
+                        order.ShipmentId = req.body.shid
                         order.Truckno = req.body.trno
                         order.RegulatorId = req.body.regid
                         order.DoStatus = req.body.dosts
