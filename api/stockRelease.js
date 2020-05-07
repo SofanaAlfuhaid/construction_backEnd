@@ -15,19 +15,19 @@ module.exports = {
             //     if(cb.statusCode == 500) {
             //         return res.status(500).send({status : cb.statusCode, data : cb.data}) 
             //     }else {
-            //         orderModel.findOne({PONumber : req.body.po}, (err, order)=>{
-            //             if(order){
-            //                 for (i = 0; i < order.ForemenUpdate.length; i++){
-            //                     if (order.ForemenUpdate[i].conum == req.body.conum) {
-            //                         console.log("order.ForemenUpdate[i].ccorder",order.ForemenUpdate[i].ccorder)
-            //                         order.ForemenUpdate[i].ccorder = "expecting confirmation from regulator"             //req.body.ccorder
-            //                         order.ForemenUpdate[i].batchid =  req.body.batchid
-            //                         order.ForemenUpdate[i].futs = req.body.futs
-            //                         order.save()
-            //                     }
-            //                 }
-            //             }
-            //         })
+                    orderModel.findOne({PONumber : req.body.po}, (err, order)=>{
+                        if(order){
+                            for (i = 0; i < order.ForemenUpdate.length; i++){
+                                if (order.ForemenUpdate[i].conum == req.body.conum) {
+                                    console.log("order.ForemenUpdate[i].ccorder",order.ForemenUpdate[i].ccorder)
+                                    order.ForemenUpdate[i].ccorder = "expecting confirmation from regulator"             //req.body.ccorder
+                                    order.ForemenUpdate[i].batchid =  req.body.batchid
+                                    order.ForemenUpdate[i].futs = req.body.futs
+                                    order.save()
+                                }
+                            }
+                        }
+                    })
                     return res.status(200).send({status : 200, data : args, hash : ''}) //cb.data[1].tx_id
             //     }    
             // })

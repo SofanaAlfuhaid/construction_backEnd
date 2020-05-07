@@ -16,13 +16,13 @@ module.exports= {
             //     if(cb.statusCode == 500) {
             //         return res.status(500).send({status : cb.statusCode, data : cb.data}) 
             //     }else {
-            //         orderModel.findOne({PONumber : req.body.po}, (err, order)=>{
-            //             if(order){
-            //                 order.DoStatus = req.body.dosts
-            //                 order.UpdateTs = req.body.uts
-            //                 order.save()
-            //             }
-            //         })
+                    orderModel.findOne({PONumber : req.body.po}, (err, order)=>{
+                        if(order){
+                            order.DoStatus = req.body.dosts
+                            order.UpdateTs = req.body.uts
+                            order.save()
+                        }
+                    })
                     return res.status(200).send({status : 200, data : args, hash : ''}) //cb.data[1].tx_id
             //     }                   
             // })
