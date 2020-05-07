@@ -38,14 +38,14 @@ module.exports = {
     //     return res.status(500).send({status : cb.statusCode, data : cb.data})
     // }else {
         orderModel.findOne({PONumber : ponumber}, (err, order)=>{
-            if(!order){
+          if(!order){
                 var order = new orderModel()
                 order.PONumber = ponumber
                 order.PoStatus = req.body.posts
                 order.ItemNumber = req.body.itemno
                 order.itemName = req.body.itemname
                 order.Description = req.body.desc
-                order.Qunatity = req.body.quan
+                order.Quantity = req.body.quan
                 order.UnitPrice = req.body.uprice
                 order.Amount = req.body.amt
                 order.State = req.body.state
