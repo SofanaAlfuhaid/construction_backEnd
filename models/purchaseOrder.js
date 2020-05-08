@@ -31,7 +31,8 @@ const orderSchema = new mongoose.Schema({
 	ExpDate       : {type : String},
 	StockLocation : {type : String}, // zone1
 	GoodReceipt   : {type : String},
-    GRStatus      : {type : String},
+	GRStatus      : {type : String},
+	DoNumber      : {type : String},
     ForemenUpdate : [{"foreid": String,"purps": String,"fdec": String, "ccorder": String,"conum": String,"pquanty":Number, "futs":String, "batchid" : String, "bweght" : String, "density" : String}]
 });
 var order = mongoose.model('order', orderSchema);
