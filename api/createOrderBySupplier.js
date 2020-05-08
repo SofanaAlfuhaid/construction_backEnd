@@ -31,6 +31,7 @@ module.exports = {
                         order.DoStatus = req.body.dosts
                         order.GTIN = req.body.gtin
                         order.UpdateTs = req.body.uts
+                        order.DoNumber = donumber
                         order.save()
                     }
                 })
