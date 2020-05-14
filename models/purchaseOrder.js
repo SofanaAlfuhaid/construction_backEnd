@@ -8,7 +8,7 @@ const orderSchema = new mongoose.Schema({
     itemName      : {type : String},
 	Description   : {type : String},
 	Quantity      : {type: Number,default:null},
-	UintPrice     : {type : String},
+	UnitPrice     : {type : String},
 	Amount        : {type : String},
 	State         : {type : String},
 	ShipTo        : {type : String},            //"addr" // buyer location
