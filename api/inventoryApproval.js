@@ -40,7 +40,7 @@ module.exports = {
                                 order.Wallwidth = req.body.wallwidth
                                 order.StadBatchWeght = req.body.stanbathweght
                                 order.save()
-                                return res.status(500).send({status : 500, data : "backorder", hash : ''}) //cb.data[1].tx_id
+                                return res.status(500).send({status : 500, data : "reject", hash : ''}) //cb.data[1].tx_id
                             }
                         }else {
                             if (order.Standard[3] * order.Quantity == req.body.stanbathweght) {
@@ -66,7 +66,7 @@ module.exports = {
                                     order.Wallwidth = req.body.wallwidth
                                     order.StadBatchWeght = req.body.stanbathweght
                                     order.save() 
-                                    return res.status(500).send({status : 500, data : "backorder", hash : ''}) //cb.data[1].tx_id
+                                    return res.status(500).send({status : 500, data : "reject", hash : ''}) //cb.data[1].tx_id
                                 }
                             }else {
                                 order.DoStatus = req.body.dosts
@@ -78,7 +78,7 @@ module.exports = {
                                 order.Wallwidth = req.body.wallwidth
                                 order.StadBatchWeght = req.body.stanbathweght
                                 order.save() 
-                                return res.status(500).send({status : 500, data : "backorder", hash : ''}) //cb.data[1].tx_id
+                                return res.status(500).send({status : 500, data : "reject", hash : ''}) //cb.data[1].tx_id
                             }
                         }
                     }
