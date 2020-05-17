@@ -33,6 +33,11 @@ const orderSchema = new mongoose.Schema({
 	GoodReceipt   : {type : String},
 	GRStatus      : {type : String},
 	DoNumber      : {type : String},
+	Innerdia      : {type : Number, default : null},
+	Outerdia      : {type : Number, default : null},
+	Wallwidth     : {type : Number, default : null},
+	StadBatchWeght: {type : Number, default : null}, 
+	Standard      : {type :Array}, 
     ForemenUpdate : [{"foreid": String,"purps": String,"fdec": String, "ccorder": String,"conum": String,"pquanty":Number, "futs":String, "batchid" : String, "bweght" : String, "density" : String}]
 });
 var order = mongoose.model('order', orderSchema);

@@ -40,6 +40,11 @@ module.exports = {
         orderModel.findOne({PONumber : ponumber}, (err, order)=>{
           if(!order){
                 var order = new orderModel()
+                if (req.body.itemname == "Cement") {
+                    order.Standard.push(100)
+                }else {
+                  order.Standard.push(3,2,1,10)
+                }
                 order.PONumber = ponumber
                 order.PoStatus = req.body.posts
                 order.ItemNumber = req.body.itemno
