@@ -3,7 +3,7 @@ var orderModel = require("../models/purchaseOrder")
 
 module.exports = {
     inventoryApproval : async (req, res) =>{   
-    
+        // console.log("sddddd", req.body);
         args = {"po":req.body.po,"dosts":req.body.dosts,"posts":req.body.posts, "grsts":req.body.grsts, "uts":req.body.uts, "stanbathweght" : req.body.stanbathweght, "innerdia" :req.body.innerdia, "outerdia" : req.body.outerdia, "walldwidth": req.body.wallwidth}
         // obj = {
         //     chainId : "mychannel",
@@ -18,6 +18,7 @@ module.exports = {
         //     }else {
                 orderModel.findOne({PONumber : req.body.po}, (err, order)=>{
                     if(order){
+
                         if (order.itemName == "Cement") {
                             if (order.Standard[0] * order.Quantity == req.body.stanbathweght) {
                                 order.DoStatus = req.body.dosts
