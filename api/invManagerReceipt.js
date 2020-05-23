@@ -10,18 +10,18 @@ module.exports = {
         });
         var grept = "GR" + number  
         var invmngid = "IM0001"
-            args = {"po":req.body.po,"invmngid":invmngid,"expdate":req.body.expdate, "gis":req.body.gis,"grept":grept,"grsts":req.body.grsts, "uts":req.body.uts}
-            // obj = {
-            //     chainId : "mychannel",
-            //     chaincodeId : "track",
-            //     fnc : "inventoryManagerReceipt",
-            //     args : [JSON.stringify(args)]
-            // }
-            // hyperledger.invoke(obj, (cb)=>{
-            //     console.log("AAAAAAAAAA", cb);
-            //     if(cb.statusCode == 500) {
-            //         return res.status(500).send({status : cb.statusCode, data : cb.data}) 
-            //     }else {
+            args = {"po":req.body.po,"invmngid":invmngid,"expdate":req.body.expdate, "gis":req.body.gis,"grept":grept,"grsts":req.body.grsts, "uts":req.body.uts.toString()}
+            obj = {
+                chainId : "mychannel",
+                chaincodeId : "track",
+                fnc : "inventoryManagerReceipt",
+                args : [JSON.stringify(args)]
+            }
+            hyperledger.invoke(obj, (cb)=>{
+                console.log("AAAAAAAAAA", cb);
+                if(cb.statusCode == 500) {
+                    return res.status(500).send({status : cb.statusCode, data : cb.data}) 
+                }else {
                     orderModel.findOne({PONumber : req.body.po}, (err, order)=>{
                         if(order){
                             order.InvMngId = req.body.invmngid
@@ -34,8 +34,8 @@ module.exports = {
                         }
                     })
                     return res.status(200).send({status : 200, data : args, hash : ''}) //cb.data[1].tx_id
-            //     }      
-            // })
+                }      
+            })
     }
 }
 

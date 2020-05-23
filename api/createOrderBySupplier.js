@@ -10,18 +10,18 @@ module.exports = {
             charset: 'numeric'
           });
         var donumber = "DO" + number
-        args = {"po":req.body.po,"cid":req.body.cid,"shid":req.body.shid,"donumber" : donumber,"trno":req.body.trno,"regid":req.body.regid,"dosts":req.body.dosts,"gtin":req.body.gtin,"uts":req.body.uts}
-        // obj = {
-        //     chainId : "mychannel",
-        //     chaincodeId : "track",
-        //     fnc : "createOrderBySupplier",
-        //     args : [JSON.stringify(args)]
-        // }
-        // hyperledger.invoke(obj, (cb)=>{
-        //     console.log("AAAAAAAAAA", cb); 
-        //     if(cb.statusCode == 500) {
-        //         return res.status(500).send({status : cb.statusCode, data : cb.data}) 
-        //     }else {
+        args = {"po":req.body.po,"cid":req.body.cid,"shid":req.body.shid,"donumber" : donumber,"trno":req.body.trno,"regid":req.body.regid,"dosts":req.body.dosts,"gtin":req.body.gtin,"uts":req.body.uts.toString()}
+        obj = {
+            chainId : "mychannel",
+            chaincodeId : "track",
+            fnc : "createOrderBySupplier",
+            args : [JSON.stringify(args)]
+        }
+        hyperledger.invoke(obj, (cb)=>{
+            console.log("AAAAAAAAAA", cb); 
+            if(cb.statusCode == 500) {
+                return res.status(500).send({status : cb.statusCode, data : cb.data}) 
+            }else {
                 orderModel.findOne({PONumber : req.body.po}, (err, order)=>{
                     if(order){
                         order.CarrierId = req.body.cid
@@ -36,8 +36,8 @@ module.exports = {
                     }
                 })
                 return res.status(200).send({status : 200, data : args, hash : ''}) //cb.data[1].tx_id
-        //     }  
-        // })
+            }  
+        })
     }
 }
 

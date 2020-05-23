@@ -3,18 +3,18 @@ var orderModel = require("../models/purchaseOrder")
 
 module.exports = {
     stockRelease : async (req, res) =>{   
-            args = {"po":req.body.po,"ccorder":req.body.ccorder, "futs":req.body.futs,"batchid":req.body.batchid,"conum":req.body.conum}
-            // obj = {
-            //     chainId : "mychannel",
-            //     chaincodeId : "track",
-            //     fnc : "stockRelease",
-            //     args : [JSON.stringify(args)]
-            // }
-            // hyperledger.invoke(obj, (cb)=>{
-            //     console.log("AAAAAAAAAA", cb); 
-            //     if(cb.statusCode == 500) {
-            //         return res.status(500).send({status : cb.statusCode, data : cb.data}) 
-            //     }else {
+            args = {"po":req.body.po,"ccorder":req.body.ccorder, "futs":req.body.futs.toString(),"batchid":req.body.batchid,"conum":req.body.conum}
+            obj = {
+                chainId : "mychannel",
+                chaincodeId : "track",
+                fnc : "stockRelease",
+                args : [JSON.stringify(args)]
+            }
+            hyperledger.invoke(obj, (cb)=>{
+                console.log("AAAAAAAAAA", cb); 
+                if(cb.statusCode == 500) {
+                    return res.status(500).send({status : cb.statusCode, data : cb.data}) 
+                }else {
                     orderModel.findOne({PONumber : req.body.po}, (err, order)=>{
                         if(order){
                             for (i = 0; i < order.ForemenUpdate.length; i++){
@@ -29,7 +29,7 @@ module.exports = {
                         }
                     })
                     return res.status(200).send({status : 200, data : args, hash : ''}) //cb.data[1].tx_id
-            //     }    
-            // })
+                }    
+            })
     }
 }

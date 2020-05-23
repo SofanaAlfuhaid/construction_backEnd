@@ -10,19 +10,19 @@ module.exports = {
             charset: 'numeric'
           });
         var conum = "co" + number  
-            args = {"po":req.body.po,"foreid":req.body.foreid,"purps":req.body.purps,"fdec":req.body.fdec, "ccorder":req.body.ccorder,"conum":conum,"pquanty":req.body.pquanty, "futs":req.body.futs};
-            // console.log("args",args)
-            // obj = {
-            //     chainId : "mychannel",
-            //     chaincodeId : "track",
-            //     fnc : "formenConsumption",
-            //     args : [JSON.stringify(args)]
-            // }
-            // hyperledger.invoke(obj, (cb)=>{
-            //     console.log("AAAAAAAAAA", cb);
-            //     if(cb.statusCode == 500) {
-            //         return res.status(500).send({status : cb.statusCode, data : cb.data}) 
-            //     }else {
+            args = {"po":req.body.po,"foreid":req.body.foreid,"purps":req.body.purps,"fdec":req.body.fdec, "ccorder":req.body.ccorder,"conum":conum,"pquanty":Number(req.body.pquanty), "futs":req.body.futs.toString()};
+            console.log("args",args)
+            obj = {
+                chainId : "mychannel",
+                chaincodeId : "track",
+                fnc : "formenConsumption",
+                args : [JSON.stringify(args)]
+            }
+            hyperledger.invoke(obj, (cb)=>{
+                console.log("AAAAAAAAAA", cb);
+                if(cb.statusCode == 500) {
+                    return res.status(500).send({status : cb.statusCode, data : cb.data}) 
+                }else {
                     orderModel.findOne({PONumber : req.body.po}, (err, order)=>{
                         // console.log("order", order)
                         if(order){
@@ -31,8 +31,8 @@ module.exports = {
                         }
                     })
                     return res.status(200).send({status : 200, data : args, hash : ''}) //cb.data[1].tx_id
-            //     }      
-            // })
+                }      
+            })
     }
 }
 
