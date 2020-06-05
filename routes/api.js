@@ -12,7 +12,8 @@ var purchaseOrder = require('../api/purchaseOrder');
 var recOrderbySupplier = require('../api/recOrderbySupplier');
 var stockRelease = require('../api/stockRelease');
 var getOrder = require('../api/getOrder')
-
+var supplierOrderCorrection = require('../api/supplierOrderCorrection')
+var getBackOrders = require('../api/getBackOrders')
 
 /* GET users listing. */
 // router.get('/', function(req, res, next) {
@@ -32,5 +33,6 @@ router.post('/displayOrderStatus', displayOrderStatus.displayOrderStatus)
 router.post('/consumptionApprovalForPouring',consumptionApprovalForPouring.consumptionApprovalForPouring)
 router.get('/alldata',getOrder.getOrders)
 
-
+router.get('/getBackOrders', getBackOrders.getBackOrders)
+router.post('/supplierOrderCorrection',supplierOrderCorrection.supplierOrderCorrection)
 module.exports = router;
